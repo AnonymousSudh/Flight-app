@@ -48,6 +48,26 @@ class cityService {
         }
 
     }
+    async getAllCities() {
+        try {
+            const city = this.cityRepository.getAllCities();
+            return city
+        } catch (error) {
+            console.log("error at city service");
+            throw { error }
+        }
+    }
+
+    async createBulkCities(arr) {
+        console.log(arr);
+        try {
+            const bulkCities = this.cityRepository.createBulkCities(arr);
+            return bulkCities
+        } catch (error) {
+            console.log("error at city service")
+            throw {error}
+        }
+    }
 
 }
 

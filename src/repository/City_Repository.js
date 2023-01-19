@@ -3,9 +3,10 @@ const { City } = require("../models/index");
 // console.log(Ci)
 class cityRepository {
 
-    async createCity({ name }) {
+    async createCity( {name} ) {
         try {
-            // console.log(name + "from cityRepo");
+            // console.log({name} + "from cityRepo");
+            // console.log(name);
             const data = await City.create({ name })
             return data
         } catch (error) {
@@ -52,6 +53,30 @@ class cityRepository {
             console.log("something wrong at Repository layer");
             throw { error }
         }
+
+    }
+
+    async getAllCities(){
+        try{
+            const city = await City.findAll();
+            return city
+        }catch(error){
+            console.log("something wrong at Repository layer");
+            throw { error }
+        }
+    }
+
+    async createBulkCities(arr){
+    
+        try{
+
+            const allCities = await City.bulkCreate(arr);
+            return allCities;
+        }catch(err){
+            onsole.log("something wrong at Repository layer");
+            console.log(err);
+        }
+
 
     }
 
